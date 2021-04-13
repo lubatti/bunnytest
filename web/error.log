@@ -8,3 +8,21 @@
 2021/04/11 13:53:15 [crit] 35#35: *1 connect() to unix:/run/php/php7.4-fpm.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.68.113, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "10.6.0.2"
 2021/04/11 13:54:56 [crit] 33#33: *1 connect() to unix:/run/php/php7.4-fpm.sock failed (2: No such file or directory) while connecting to upstream, client: 10.6.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "10.6.0.2"
 2021/04/11 13:55:09 [crit] 33#33: *1 connect() to unix:/run/php/php7.4-fpm.sock failed (2: No such file or directory) while connecting to upstream, client: 10.6.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php7.4-fpm.sock:", host: "10.6.0.2"
+2021/04/13 04:59:02 [error] 36#36: *1 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PhpAmqpLib\Exception\AMQPIOException: stream_socket_client(): Unable to connect to tcp://localhost:5672 (Cannot assign requested address) in /var/www/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:111
+Stack trace:
+#0 /var/www/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(245): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#1 /var/www/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(228): PhpAmqpLib\Connection\AbstractConnection->connect()
+#2 /var/www/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(61): PhpAmqpLib\Connection\AbstractConnection->__construct()
+#3 /var/www/app/routes.php(25): PhpAmqpLib\Connection\AMQPStreamConnection->__construct()
+#4 /var/www/vendor/slim/slim/Slim/Routing/RouteGroup.php(75): Closure->{closure}()
+#5 /var/www/vendor/slim/slim/Slim/Routing/RouteCollector.php(261): Slim\Routing\RouteGroup->collectRoutes()
+#6 /var/www/vendor/slim/slim/Sl" while reading response header from upstream, client: 10.6.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php8.0-fpm.sock:", host: "10.6.0.2"
+2021/04/13 05:00:09 [error] 36#36: *3 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PhpAmqpLib\Exception\AMQPIOException: stream_socket_client(): Unable to connect to tcp://localhost:5672 (Cannot assign requested address) in /var/www/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:111
+Stack trace:
+#0 /var/www/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(245): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#1 /var/www/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(228): PhpAmqpLib\Connection\AbstractConnection->connect()
+#2 /var/www/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(61): PhpAmqpLib\Connection\AbstractConnection->__construct()
+#3 /var/www/app/routes.php(25): PhpAmqpLib\Connection\AMQPStreamConnection->__construct()
+#4 /var/www/vendor/slim/slim/Slim/Routing/RouteGroup.php(75): Closure->{closure}()
+#5 /var/www/vendor/slim/slim/Slim/Routing/RouteCollector.php(261): Slim\Routing\RouteGroup->collectRoutes()
+#6 /var/www/vendor/slim/slim/Sl" while reading response header from upstream, client: 10.6.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php8.0-fpm.sock:", host: "10.6.0.2"

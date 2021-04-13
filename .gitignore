@@ -1,1 +1,4 @@
 .idea/*
+web/.composer/*
+web/.env
+web/error.log
