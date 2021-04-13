@@ -5,8 +5,8 @@ namespace App\Application\Adapters\User;
 
 use App\Domain\Commands\User\CreateUserCommand;
 use App\Domain\User\UserNotFoundException;
-use App\Domain\User\UserRepository;
 use App\Infrastructure\CommandBus\CommandInterface;
+use App\Infrastructure\Persistence\Doctrine\Repositories\UserRepository;
 use Slim\Psr7\Request;
 use Exception;
 
@@ -37,7 +37,7 @@ class CreateUserAdapter
     private function assertValidContent(array $content): void
     {
         try {
-            $user = $this->userRepository->findUserOfEmail($content[self::FIELD_EMAIL]);
+            $user = $this->userRepository->findOneBy(['email' => $content[self::FIELD_EMAIL]]);
 
             if ($user) {
                 throw new Exception('Email already used');

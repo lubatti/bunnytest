@@ -5,15 +5,15 @@ namespace App\Application\Actions\User;
 
 use App\Application\Actions\Action;
 use App\Application\Adapters\User\CreateUserAdapter;
-use App\Infrastructure\CommandBus\CommandBusInterface;
+use League\Tactician\CommandBus;
 use Psr\Http\Message\ResponseInterface as Response;
 
 class CreateUserAction extends Action
 {
     private CreateUserAdapter $adapter;
-    private CommandBusInterface $commandBus;
+    private CommandBus $commandBus;
 
-    public function __construct(CommandBusInterface $commandBus, CreateUserAdapter $adapter)
+    public function __construct(CommandBus $commandBus, CreateUserAdapter $adapter)
     {
         $this->commandBus = $commandBus;
         $this->adapter = $adapter;

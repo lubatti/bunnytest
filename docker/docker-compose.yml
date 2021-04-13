@@ -56,6 +56,8 @@ services:
     volumes:
       - ./mysql-data:/var/lib/mysql
       - ./mysql-config:/etc/mysql/conf.d
+    depends_on:
+      - web
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: app
