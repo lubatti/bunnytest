@@ -21,7 +21,8 @@ class CommunicationService
     {
         $channel = $this->streamConnection->channel();
 
-        $channel->queue_declare($queue,
+        $channel->queue_declare(
+            $queue,
             false,
             true,
             false,

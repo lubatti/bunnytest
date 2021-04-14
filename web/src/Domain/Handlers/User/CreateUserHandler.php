@@ -27,6 +27,9 @@ class CreateUserHandler
         $this->userRepository->em()->persist($user);
         $this->userRepository->em()->flush();
 
-        $this->communicationService->spreadMessage([]);
+        $this->communicationService->spreadMessage([
+            'event' => 'new_user_created',
+            'data' => $user->jsonSerialize(),
+        ]);
     }
 }
