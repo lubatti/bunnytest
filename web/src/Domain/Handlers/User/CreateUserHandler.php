@@ -29,7 +29,7 @@ class CreateUserHandler
 
         $this->communicationService->spreadMessage([
             'event' => 'new_user_created',
-            'data' => $user->jsonSerialize(),
+            'data' => $user->toArray(),
         ]);
     }
 }

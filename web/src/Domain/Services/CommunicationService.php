@@ -21,14 +21,12 @@ class CommunicationService
     {
         $channel = $this->streamConnection->channel();
 
-        $channel->queue_declare(
-            $queue,
-            false,
-            true,
-            false,
-            false
-        );
+        $channel->queue_declare(self::DEFAULT_QUEUE, false, false, false, false);
 
-        $channel->basic_publish(new AMQPMessage(json_encode($data)));
+        $channel->basic_publish(
+            new AMQPMessage(json_encode($data)),
+            '',
+            self::DEFAULT_QUEUE
+        );
     }
 }

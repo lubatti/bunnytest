@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Entities;
 
-use JsonSerializable;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
@@ -11,7 +10,7 @@ use Ramsey\Uuid\Uuid;
  * @ORM\Entity(repositoryClass="App\Infrastructure\Persistence\Doctrine\Repositories\UserRepository")
  * @ORM\Table(name="users")
  */
-class User implements JsonSerializable
+class User
 {
     private const PASSWORD_ALGORITHM = PASSWORD_BCRYPT;
 
@@ -58,7 +57,7 @@ class User implements JsonSerializable
         return password_verify($password, $this->password);
     }
 
-    public function jsonSerialize(): array
+    public function toArray(): array
     {
         return [
             'id' => $this->getId(),
